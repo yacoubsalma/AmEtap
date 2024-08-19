@@ -1,0 +1,24 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Evenement{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div style="margin-top: 40px;"></div>
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="mb-4">Edit Evenement</h1>
+                        
+                        {{ include('evenement/_form.html.twig', {'button_label': 'Save Changes'}) }}
+
+                        <div class="text-end mt-4">
+                            <a href="{{ path('app_evenement_indexBack') }}" class="btn btn-outline-secondary">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

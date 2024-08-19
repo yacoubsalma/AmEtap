@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suggestion Management{% endblock %}
+{% block carousel %}
+    <!-- Breadcrumb Section -->
+    <div class="container-fluid bg-breadcrumb" style="background-image: url('{{ asset('FrontOffice/img/skys1.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="display-3 mb-4" style="color: #080b3e;">Suggestion</h3>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="{{ path('base') }}">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_evenement_index') }}">événement</a></li>
+                <li class="breadcrumb-item active text-white">Suggestion</li>
+            </ol>    
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                <h5 class="section-title px-3">Suggestion </h5>
+                <h1 class="mb-0">Share Your Thoughts!</h1>
+            </div>
+
+            <!-- Section de messages flash -->
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <!-- Section de création de suggestion -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            {{ include('suggestion/_form.html.twig', {'form': form, 'button_label': '+'}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section de visualisation des suggestions -->
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <h2 class="text-center mb-4">Suggestions</h2>
+                    {% if suggestions is not empty %}
+                        <div class="owl-carousel owl-theme">
+                            {% for suggestion in suggestions %}
+                                <div class="item">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="card-text">{{ suggestion.msg }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <div class="text-center">No records found</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <!-- Add Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .owl-prev,
+        .owl-next {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .owl-dots {
+            display: flex !important;
+            justify-content: center !important;
+            margin-top: 15px !important;
+            padding: 0 !important;
+            list-style: none; /* Ensure no default list styles are applied */
+        }
+
+        .owl-dot {
+            display: inline-block !important;
+            margin: 0 5px !important;
+            background: #ddd !important;
+            border-radius: 50% !important;
+            width: 10px !important;
+            height: 10px !important;
+            vertical-align: middle !important;
+        }
+
+        .owl-dot.active {
+            background: #333 !important;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <!-- Add Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                items: 1,
+                dots: true,
+                navText: ['<i class="bi bi-arrow-left"></i>', '<i class="bi bi-arrow-right"></i>']
+            });
+        });
+    </script>
+{% endblock %}

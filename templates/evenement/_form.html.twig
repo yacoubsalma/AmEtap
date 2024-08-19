@@ -1,0 +1,15 @@
+{{ form_start(form, {'attr': {
+    'onsubmit': 'return validateDates()',
+    'class': 'my-form-class',
+    'enctype': 'multipart/form-data',
+    'novalidate': 'novalidate'
+}}) }}
+
+{{ form_widget(form) }}
+
+<div style="margin-top: 20px;"></div>
+<button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+
+

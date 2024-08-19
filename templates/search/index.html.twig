@@ -1,0 +1,21 @@
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Liste des Conventions</h1>
+  
+    <div class="row">
+        {% for convention in conventions %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ convention.title }}</h5>
+                        <p class="card-text">{{ convention.description }}</p>
+                        <a href="{{ asset('uploads/' ~ convention.pdfFile) }}" class="btn btn-primary" target="_blank">Voir le PDF</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

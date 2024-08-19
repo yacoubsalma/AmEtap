@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Conventions{% endblock %}
+
+{% block carousel %}
+    <!-- Breadcrumb Section -->
+    <div class="container-fluid bg-breadcrumb" style="background-image: url('{{ asset('FrontOffice/img/skys1.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="display-3 mb-4" style="color: #080b3e;">Conventions</h3>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="{{ path('base') }}">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_evenement_index') }}">événement</a></li>
+                <li class="breadcrumb-item active text-white">Conventions</li>
+            </ol>    
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Liste des Conventions</h1>
+    
+    <!-- Search Form -->
+    <form method="get" action="{{ path('app_convention_index') }}" class="mb-4 text-center" id="search-form">
+        <input type="text" name="search" id="search" class="form-control w-50 mx-auto" placeholder="Rechercher une convention" value="{{ app.request.query.get('search') }}">
+        <button type="submit" class="btn btn-primary mt-2">Rechercher</button>
+        <button type="button" id="reset-button" class="btn btn-secondary mt-2">Réinitialiser</button>
+    </form>
+
+    <!-- Results Container -->
+    <div class="row">
+        {% for convention in conventions %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ convention.title }}</h5>
+                        <p class="card-text">{{ convention.description }}</p>
+                        <a href="{{ asset('uploads/' ~ convention.pdfFile) }}" class="btn btn-primary" target="_blank">Voir le PDF</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Handle search input
+        $('#search').keyup(function() {
+            var query = $(this).val();
+            $.ajax({
+                url: "{{ path('app_search') }}",
+                type: "POST",
+                data: { query: query },
+                success: function(data) {
+                    $('#results').html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: " + status + " - " + error);
+                }
+            });
+        });
+
+        // Handle reset button
+        $('#reset-button').click(function() {
+            $('#search').val(''); // Clear the search input
+            $('#search-form').submit(); // Submit the form to reload all conventions
+        });
+    });
+</script>
+{% endblock %}

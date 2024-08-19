@@ -1,0 +1,49 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Reservation Index{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Reservation Index</h1>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Idr</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Matricule</th>
+                        <th>Adresse</th>
+                        <th>Num</th>
+                       
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for reservation in reservations %}
+                    <tr>
+                        <td>{{ reservation.idr }}</td>
+                        <td>{{ reservation.nom }}</td>
+                        <td>{{ reservation.prenom }}</td>
+                        <td>{{ reservation.matricule }}</td>
+                        <td>{{ reservation.adresse }}</td>
+                        <td>{{ reservation.num }}</td>
+                      
+                        <td>
+                            <a href="{{ path('app_reservation_show', {'idr': reservation.idr}) }}" class="btn btn-info btn-sm">Show</a>
+                            <a href="{{ path('app_reservation_edit', {'idr': reservation.idr}) }}" class="btn btn-warning btn-sm">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="9" class="text-center">No records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        
+    </div>
+{% endblock %}

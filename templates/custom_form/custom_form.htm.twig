@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Formulaire Personnalisé pour la Réservation</h1>
+
+        {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': true}}) }}
+
+        <div class="row">
+            {% for field in form %}
+                {% if field.vars.name != '_token' %}
+                    <div class="col-md-6 mb-3">
+                        {{ form_label(field, null, {'attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(field, {'attr': {'class': 'form-control'}}) }}
+                        {{ form_errors(field, {'attr': {'class': 'invalid-feedback'}}) }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="mt-4 text-end">
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+            <div style="margin-top: 30px;"></div>
+
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

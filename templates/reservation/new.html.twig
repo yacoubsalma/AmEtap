@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Reservation{% endblock %}
+
+{% block carousel %}
+    <!-- Breadcrumb Section -->
+    <div class="container-fluid bg-breadcrumb">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h3 class="text-white display-3 mb-4">Online Booking</h3>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="{{ path('base') }}">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_evenement_index') }}">événement</a></li>
+                <li class="breadcrumb-item active text-white">Online Booking</li>
+            </ol>    
+        </div>
+    </div>
+    {% endblock %}
+    {% block content %}
+    <!-- Main Content Section -->
+    <div class="container-fluid booking py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <!-- Event Details Section -->
+                <div class="col-lg-6">
+                    <h5 class="section-booking-title pe-3 text-white">Event Details</h5>
+                    <h1 class="text-white mb-4">{{ evenement.nome }}</h1>
+                    <div class="mb-4">
+                        {% if evenement.img %}
+                            <img src="{{ asset('uploads/' ~ evenement.img) }}" alt="{{ evenement.nome }}" class="img-fluid rounded mb-3">
+
+                        {% else %}
+                            <p class="text-muted">No image available</p>
+                        {% endif %}
+                    </div>
+                    <p class="text-white"><strong>Date Début:</strong> {{ evenement.dateD|date('d/m/Y') }}</p>
+                    <p class="text-white"><strong>Date Fin:</strong> {{ evenement.dateF|date('d/m/Y') }}</p>
+                    <p class="text-white"><strong>Lieu:</strong> {{ evenement.lieu }}</p>
+                   
+                    <p class="text-white"><strong>Description :</strong> {{ evenement.LongD }}</p>
+                </div>
+                
+                <!-- Reservation Form Section -->
+                <div class="col-lg-6">
+                    <h1 class="text-white mb-3">Book A Reservation</h1>
+                    
+                    {% for type, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+                    {{ form_start(form, { 'action': path('app_reservation_new', {'ide': evenement.ide}), 'method': 'POST' }) }}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                {{ form_widget(form.nom, {'attr': {'class': 'form-control bg-white border-0', 'placeholder': 'Your Name', 'style': 'color: white;'}}) }}
+                                {{ form_label(form.nom, 'Your Name', {'attr': {'class': 'text-white'}}) }}
+                                {{ form_errors(form.nom) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                {{ form_widget(form.prenom, {'attr': {'class': 'form-control bg-white border-0', 'placeholder': 'Your Prénom', 'style': 'color: white;'}}) }}
+                                {{ form_label(form.prenom, 'Your Prénom', {'attr': {'class': 'text-white'}}) }}
+                                {{ form_errors(form.prenom) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                {{ form_widget(form.matricule, {'attr': {'class': 'form-control bg-white border-0', 'placeholder': 'Matricule', 'style': 'color: white;'}}) }}
+                                {{ form_label(form.matricule, 'Matricule', {'attr': {'class': 'text-white'}}) }}
+                                {{ form_errors(form.matricule) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                {{ form_widget(form.adresse, {'attr': {'class': 'form-control bg-white border-0', 'placeholder': 'Adresse', 'style': 'color: white;'}}) }}
+                                {{ form_label(form.adresse, 'Adresse', {'attr': {'class': 'text-white'}}) }}
+                                {{ form_errors(form.adresse) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                {{ form_widget(form.num, {'attr': {'class': 'form-control bg-white border-0', 'placeholder': 'Numéro', 'style': 'color: white;'}}) }}
+                                {{ form_label(form.num, 'Numéro', {'attr': {'class': 'text-white'}}) }}
+                                {{ form_errors(form.num) }}
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary text-white w-100 py-3" type="submit">Book Now</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

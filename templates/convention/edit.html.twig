@@ -1,0 +1,31 @@
+{# templates/convention/edit.html.twig #}
+
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Modifier Convention{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Modifier la Convention</h1>
+
+    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': true}}) }}
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.description) }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.pdfFile) }}
+        </div>
+    </div>
+
+    <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary">Mettre à jour</button>
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+{% block title %}Accueil{% endblock %}
+{% block carousel %}
+<div class="container-fluid bg-breadcrumb" style="background-image: url('{{ asset('./FrontOffice/img/skys1.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class=" display-3 mb-4" style="color: #080b3e;">bureau executif</h3>
+
+        <ol class="breadcrumb justify-content-center mb-0">
+            <!-- Breadcrumb items here -->
+        </ol>    
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membres du Bureau</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .guide-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .guide-item img {
+            width: 250px;
+            height: 250px;
+        }
+        .guide-item .guide-title {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center mb-5" style="max-width: 900px;">
+                <h1 class="mb-0">Membres du Bureau</h1>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6">
+                    <div class="guide-item text-center mb-4">
+                        <img src="{{ asset('./FrontOffice/img/guide 6.jpg') }}" class="img-fluid rounded" alt="Image">
+                        <div class="mt-2 guide-title">
+                            <h4 class="mt-3">Full Name</h4>
+                            <p class="mb-0">Président</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="guide-item text-center mb-4">
+                        <img src="{{ asset('./FrontOffice/img/guide-2.jpg') }}" class="img-fluid rounded" alt="Image">
+                        <div class="mt-2 guide-title">
+                            <h4 class="mt-3">Full Name</h4>
+                            <p class="mb-0">Vice-président</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="guide-item text-center mb-4">
+                        <img src="{{ asset('./FrontOffice/img/guide-4.jpg') }}" class="img-fluid rounded" alt="Image">
+                        <div class="mt-2 guide-title">
+                            <h4 class="mt-3">Full Name</h4>
+                            <p class="mb-0">Trésorier</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="guide-item text-center mb-4">
+                        <img src="{{ asset('./FrontOffice/img/guide 7.jpg') }}" class="img-fluid rounded" alt="Image">
+                        <div class="mt-2 guide-title">
+                            <h4 class="mt-3">Full Name</h4>
+                            <p class="mb-0">Trésorier-adjoint</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="guide-item text-center mb-4">
+                        <img src="{{ asset('./FrontOffice/img/guide 5.jpg') }}" class="img-fluid rounded" alt="Image">
+                        <div class="mt-2 guide-title">
+                            <h4 class="mt-3">Full Name</h4>
+                            <p class="mb-0">Secrétaire</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="guide-item text-center mb-4">
+                        <img src="{{ asset('./FrontOffice/img/guide-1.jpg') }}" class="img-fluid rounded" alt="Image">
+                        <div class="mt-2 guide-title">
+                            <h4 class="mt-3">Full Name</h4>
+                            <p class="mb-0">Secrétaire-adjoint</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+{% endblock %}

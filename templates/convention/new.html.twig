@@ -1,0 +1,31 @@
+{# templates/convention/new.html.twig #}
+
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Nouvelle Convention{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Créer une Nouvelle Convention</h1>
+
+    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': true}}) }}
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6 mb-3">
+            {{ form_row(form.pdfFile, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-12 mb-3">
+            {{ form_row(form.description, {'attr': {'class': 'form-control form-control-lg', 'style': 'width:100%;', 'rows': 20}}) }}
+        </div>
+    </div>
+
+    <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary">Soumettre</button>
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}

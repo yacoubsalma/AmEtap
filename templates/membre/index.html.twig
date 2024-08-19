@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block carousel %}
+<div class="container-fluid bg-breadcrumb" style="background-image: url('{{ asset('./FrontOffice/img/skys1.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="container text-center py-5" style="max-width: 900px;">
+        <h3 class=" display-3 mb-4" style="color: #080b3e;">bureau executif</h3>
+
+        <ol class="breadcrumb justify-content-center mb-0">
+            <!-- Breadcrumb items here -->
+        </ol>    
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        
+        <h1 class="mb-4 text-center">Membres du Bureau</h1>
+
+        <div class="row justify-content-center">
+            
+            {% for membre in membres %}
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src="{{ asset('uploads/' ~  membre.image) }}" class="card-img-top" alt="{{ membre.fullName }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{{ membre.fullName }}</h5>
+                            <p class="card-text text-center">{{ membre.poste }}</p>
+                           
+                            
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

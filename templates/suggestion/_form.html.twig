@@ -1,0 +1,9 @@
+{# suggestion/_form.html.twig #}
+{{ form_start(form, {'attr': {'class': 'd-flex align-items-center w-100'}}) }}
+    <div class="form-group flex-grow-1 mb-0">
+        {{ form_label(form.msg, null, {'label_attr': {'class': 'sr-only'}}) }}
+        {{ form_widget(form.msg, { 'attr': {'class': 'form-control w-100', 'rows': '4', 'placeholder': 'Enter your suggestion'} }) }}
+        {{ form_errors(form.msg) }}
+    </div>
+    <button type="submit" class="btn btn-primary ml-2">{{ button_label|default('+') }}</button>
+{{ form_end(form) }}

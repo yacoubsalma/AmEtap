@@ -1,0 +1,30 @@
+{% extends 'baseback.html.twig' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Membres du Bureau</h1>
+
+      
+
+
+        <div class="row">
+            {% for membre in membres %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ asset('uploads/' ~  membre.image) }}" class="card-img-top" alt="{{ membre.fullName }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ membre.fullName }}</h5>
+                            <p class="card-text">{{ membre.poste }}</p>
+                            <a href="{{ path('app_membre_edit', {'id': membre.idm}) }}" class="btn btn-warning">Modifier</a>
+                            <form action="{{ path('app_membre_delete', {'id': membre.idm}) }}" method="post" style="display:inline;">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ membre.idm) }}">
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ path('app_membre_new') }}" class="btn btn-primary mb-3">Ajouter un Membre</a>
+    </div>
+{% endblock %}

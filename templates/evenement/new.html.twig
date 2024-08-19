@@ -1,0 +1,72 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Evenement{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4">Create new Evenement</h1>
+
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'forms-sample'}}) }}
+
+                <div class="mb-3">
+                    <label for="nomE" class="form-label">Nom</label>
+                    {{ form_widget(form.nomE, {'attr': {'class': 'form-control', 'placeholder': 'Nom de l\'événement', 'aria-label': 'Nom de l\'événement'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.nomE) }}</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="img" class="form-label">Image</label>
+                    {{ form_widget(form.img, {'attr': {'class': 'form-control', 'accept': 'image/*', 'aria-label': 'Image de l\'événement'}}) }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="dateD" class="form-label">Date de début</label>
+                    {{ form_widget(form.dateD, {'attr': {'class': 'form-control', 'aria-label': 'Date de début de l\'événement'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.dateD) }}</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="dateF" class="form-label">Date de fin</label>
+                    {{ form_widget(form.dateF, {'attr': {'class': 'form-control', 'aria-label': 'Date de fin de l\'événement'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.dateF) }}</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lieu" class="form-label">Lieu</label>
+                    {{ form_widget(form.lieu, {'attr': {'class': 'form-control', 'placeholder': 'Lieu de l\'événement', 'aria-label': 'Lieu de l\'événement'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.lieu) }}</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ShortD" class="form-label">Description courte</label>
+                    {{ form_widget(form.ShortD, {'attr': {'class': 'form-control', 'rows': 2, 'placeholder': 'Description courte de l\'événement', 'aria-label': 'Description courte de l\'événement'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.ShortD) }}</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="LongD" class="form-label">Description longue</label>
+                    {{ form_widget(form.LongD, {'attr': {'class': 'form-control', 'rows': 4, 'placeholder': 'Description longue de l\'événement', 'aria-label': 'Description longue de l\'événement'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.LongD) }}</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="sommeA" class="form-label">Somme allouée</label>
+                    {{ form_widget(form.sommeA, {'attr': {'class': 'form-control', 'placeholder': 'Somme allouée pour l\'événement', 'aria-label': 'Somme allouée'}}) }}
+                    <div class="text-danger mt-1">{{ form_errors(form.sommeA) }}</div>
+                </div>
+
+                {{ form_row(form._token) }}
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary me-2">Ajouter</button>
+                    <button type="reset" class="btn btn-secondary">Réinitialiser</button>
+                    <a href="{{ path('app_evenement_indexBack') }}" class="btn btn-light">Retour à la liste</a>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

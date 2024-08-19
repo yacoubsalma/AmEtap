@@ -1,0 +1,76 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+#[Route('/reservation/new/{ide}', name: 'app_reservation_new', methods: ['GET', 'POST'])]
+
+# Routes pour les réservations
+app_reservation_new:
+    path: /reservation/new/{ide}
+    controller: App\Controller\ReservationController::new
+    methods: [GET, POST]
+
+app_reservation_results:
+    path: /reservation/results/{id}
+    controller: App\Controller\ReservationController::results
+    methods: [GET]
+
+app_custom_form_create:
+    path: /evenement/{id}/create-custom-form
+    controller: App\Controller\CustomFormController::createCustomForm
+    methods: [GET, POST]
+
+app_custom_form_aff:
+    path: /evenement/{id}/custom-form
+    controller: App\Controller\CustomFormController::createCustomFormAff
+    methods: [GET]
+
+# Routes pour les tri
+# Tri ID asc
+reservation_display_sorted_by_id_asc:
+    path: /evenement/{id}/tri/id/asc
+    controller: App\Controller\TriController::displaySortedByIdASC
+
+# Tri ID desc
+reservation_display_sorted_by_id_desc:
+    path: /evenement/{id}/tri/id/desc
+    controller: App\Controller\TriController::displaySortedByIdDESC
+
+reservation_display_sorted_by_nom_asc:
+    path: /evenement/{id}/tri/nom/asc
+    controller: App\Controller\TriController::displaySortedByNomASC
+
+reservation_display_sorted_by_nom_desc:
+    path: /evenement/{id}/tri/nom/desc
+    controller: App\Controller\TriController::displaySortedByNomDESC
+
+reservation_display_sorted_by_prenom_asc:
+    path: /evenement/{id}/tri/prenom/asc
+    controller: App\Controller\TriController::displaySortedByPrenomASC
+
+reservation_display_sorted_by_prenom_desc:
+    path: /evenement/{id}/tri/prenom/desc
+    controller: App\Controller\TriController::displaySortedByPrenomDESC
+
+reservation_display_sorted_by_matricule_asc:
+    path: /evenement/{id}/tri/matricule/asc
+    controller: App\Controller\TriController::displaySortedByMatriculeASC
+
+reservation_display_sorted_by_matricule_desc:
+    path: /evenement/{id}/tri/matricule/desc
+    controller: App\Controller\TriController::displaySortedByMatriculeDESC
+
+reservation_display_sorted_by_adresse_asc:
+    path: /evenement/{id}/tri/adresse/asc
+    controller: App\Controller\TriController::displaySortedByAdresseASC
+
+reservation_display_sorted_by_adresse_desc:
+    path: /evenement/{id}/tri/adresse/desc
+    controller: App\Controller\TriController::displaySortedByAdresseDESC
+
+reservation_display_sorted_by_num_asc:
+    path: /evenement/{id}/tri/num/asc
+    controller: App\Controller\TriController::displaySortedByNumASC
+
+reservation_display_sorted_by_num_desc:
+    path: /evenement/{id}/tri/num/desc
+    controller: App\Controller\TriController::displaySortedByNumDESC

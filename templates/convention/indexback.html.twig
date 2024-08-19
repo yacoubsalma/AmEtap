@@ -1,0 +1,29 @@
+{# templates/convention/index.html.twig #}
+
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Liste des Conventions{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Liste des Conventions</h1>
+    <div class="row">
+        {% for convention in conventions %}
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ convention.title }}</h5>
+                        <p class="card-text">{{ convention.description }}</p>
+                        <a href="{{ asset('uploads/' ~ convention.pdfFile) }}" class="btn btn-primary" target="_blank">Voir le PDF</a>
+                        <a href="{{ path('convention_edit', {'idc': convention.idc}) }}" class="btn btn-warning">Modifier</a>
+                        <form action="{{ path('convention_delete', {'idc': convention.idc}) }}" method="post" style="display:inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ convention.idc) }}">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
